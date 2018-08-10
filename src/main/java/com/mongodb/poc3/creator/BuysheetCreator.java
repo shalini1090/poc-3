@@ -27,7 +27,7 @@ public class BuysheetCreator {
 		for(int i =0 ;i<100;i++)
 			hmM.put("M"+i, +100+i);
 		
-		for(int cc=0 ;cc<50;cc++)
+		for(int cc=0 ;cc<100;cc++)
 			for(int cl=0;cl<60;cl++)
 				for(int w=0;w<53;w++)
 				{

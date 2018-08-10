@@ -85,10 +85,10 @@ public class RestControllerAPIs {
 	
 		//gridOperations.store(new FileInputStream("D:\\JSA\\text-2.txt"), "text-2.txt", "text/plain", metaData);
 
-		return "Done saving in "+(end-start)+ " miliseconds";
+		return bs.getRows().parallelStream().collect(Collectors.toList()).size()+" records saving in "+(end-start)+ " miliseconds";
 	}
 	
-	@GetMapping("/retrieve/imagefile")
+	@GetMapping("/retrieve/data")
 	public String retrieveImageFile() throws IOException, ClassNotFoundException{
 		// read file from MongoDB
 		long start = System.currentTimeMillis();
@@ -102,15 +102,15 @@ public class RestControllerAPIs {
 		ObjectInputStream in = new ObjectInputStream(is);
 		Buysheet o=  (Buysheet)in.readObject();
 	    
-		System.out.println(o.getRows().parallelStream().collect(Collectors.toList()).size());
+		//System.out.println(o.getRows().parallelStream().collect(Collectors.toList()).size());
 		//System.out.println(o.toString());
 //	    BufferedReader   br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 //	        
 //	        br.lines().forEach(l->System.out.println("++++++++++   "+l));
 		
-		System.out.println("Image File Name:" + imageFile.getFilename());
+		//System.out.println("Image File Name:" + imageFile.getFilename());
 		
-		return "Done retrievig in "+(end-start)+ " miliseconds";
+		return o.getRows().parallelStream().collect(Collectors.toList()).size()+" records retrieved in "+(end-start)+ " miliseconds";
 	}
 	
 	@GetMapping("/retrieve/textfiles")
